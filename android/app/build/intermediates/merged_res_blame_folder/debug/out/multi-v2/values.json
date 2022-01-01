@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Proj Dev\\AppTaskAlemao\\MyApp\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\Proj Dev\\AppTaskAlemao\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\PhelipeRost\\.gradle\\caches\\transforms-2\\files-2.1\\a8f6015f96666ab8d93bfe5b64998bc8\\jetified-flipper-0.75.1\\res\\values\\values.xml",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Proj Dev\\AppTaskAlemao\\MyApp\\android\\app\\build\\generated\\res\\resValues\\debug\\values\\gradleResValues.xml",
+                    "source": "D:\\Proj Dev\\AppTaskAlemao\\android\\app\\build\\generated\\res\\resValues\\debug\\values\\gradleResValues.xml",
                     "from": {
                         "startLines": "6,8",
                         "startColumns": "4,4",
@@ -35,6 +35,25 @@
                         "startOffsets": "16930,16994",
                         "endColumns": "63,68",
                         "endOffsets": "16989,17058"
+                    }
+                },
+                {
+                    "source": "D:\\Proj Dev\\AppTaskAlemao\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "234"
+                    },
+                    "to": {
+                        "startLines": "363",
+                        "startColumns": "4",
+                        "startOffsets": "25520",
+                        "endLines": "366",
+                        "endColumns": "12",
+                        "endOffsets": "25700"
                     }
                 },
                 {
@@ -76,7 +95,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Proj Dev\\AppTaskAlemao\\MyApp\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "D:\\Proj Dev\\AppTaskAlemao\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
@@ -90,25 +109,6 @@
                         "startOffsets": "19072",
                         "endColumns": "42",
                         "endOffsets": "19110"
-                    }
-                },
-                {
-                    "source": "D:\\Proj Dev\\AppTaskAlemao\\MyApp\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "234"
-                    },
-                    "to": {
-                        "startLines": "363",
-                        "startColumns": "4",
-                        "startOffsets": "25520",
-                        "endLines": "366",
-                        "endColumns": "12",
-                        "endOffsets": "25700"
                     }
                 },
                 {
