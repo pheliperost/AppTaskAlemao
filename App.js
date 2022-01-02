@@ -23,6 +23,7 @@ import {
   Box,
   Slider,
   View,
+  ScrollView,
 } from 'native-base';
 import NativeBaseIcon from './src/components/NativeBaseIcon';
 import {render} from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
@@ -53,27 +54,33 @@ export const Slid = () => {
     <Stack mx={5} space={4} alignItems="center" w="100%">
       <Box mx={5} w="250">
         <Text>onChangeValue - {onChangeValue}</Text>
-        <Text>onChangeEndValue - {onChangeEndValue}</Text>
-        <Slider
+        <Text>onChangeEndValue - {onChangeEndValue}</Text>        
+          <Slider
           defaultValue={3}
-          colorScheme="cyan"
-          onChange={v => {
+            colorScheme="cyan"
+            onChange={v => {
             setOnChangeValue(Math.floor(v));
-          }}
+            }}
           onChangeEnd={v => {
-            setOnChangeEndValue(Math.floor(v));
-          }}>
+              setOnChangeEndValue(Math.floor(v));
+           }}>
           <Slider.Track>
             <Slider.FilledTrack />
           </Slider.Track>
           <Slider.Thumb />
-        </Slider>
-        {meuloopfunction(onChangeEndValue)}
+          </Slider>
+        <ScrollView
+          _contentContainerStyle={{
+            px: '20px',
+            mb: '4',
+            minW: '72',
+          }}>
+          {meuloopfunction(onChangeEndValue)}
+        </ScrollView>
       </Box>
     </Stack>
   );
 };
-
 
 export const CheckB = props => {
   const [groupValues, setGroupValues] = React.useState([]);
