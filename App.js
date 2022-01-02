@@ -26,6 +26,7 @@ import {
 } from 'native-base';
 import NativeBaseIcon from './src/components/NativeBaseIcon';
 import {render} from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
+import uuid from 'react-native-uuid';
 
 // Color Switch Component
 function ToggleDarkMode() {
@@ -45,28 +46,14 @@ function ToggleDarkMode() {
   );
 }
 
-export const CheckB = props => {
-  const [groupValues, setGroupValues] = React.useState([]);
-  return (
-    <Checkbox.Group
-      onChange={setGroupValues}
-      value={groupValues}
-      accessibilityLabel="choose numbers">
-      <Checkbox value="one">Fala</Checkbox>
-      <Checkbox value="two">Leitura</Checkbox>
-    </Checkbox.Group>
-  );
-};
-
 export const Slid = () => {
-  const [onChangeValue, setOnChangeValue] = React.useState(10);
-  const [onChangeEndValue, setOnChangeEndValue] = React.useState(10);
+  const [onChangeValue, setOnChangeValue] = React.useState(1);
+  const [onChangeEndValue, setOnChangeEndValue] = React.useState(1);
   return (
     <Stack mx={5} space={4} alignItems="center" w="100%">
-      <Text>onChangeValue - {onChangeValue}</Text>
-      <Text>onChangeEndValue - {onChangeEndValue}</Text>
-
       <Box mx={5} w="250">
+        <Text>onChangeValue - {onChangeValue}</Text>
+        <Text>onChangeEndValue - {onChangeEndValue}</Text>
         <Slider
           defaultValue={3}
           colorScheme="cyan"
@@ -74,15 +61,39 @@ export const Slid = () => {
             setOnChangeValue(Math.floor(v));
           }}
           onChangeEnd={v => {
-            v && setOnChangeEndValue(Math.floor(v) && meuloopfunction(v));
+            setOnChangeEndValue(Math.floor(v));
           }}>
           <Slider.Track>
             <Slider.FilledTrack />
           </Slider.Track>
           <Slider.Thumb />
         </Slider>
+        {meuloopfunction(onChangeEndValue)}
       </Box>
     </Stack>
+  );
+};
+
+
+export const CheckB = props => {
+  const [groupValues, setGroupValues] = React.useState([]);
+  var RandomNumberGroup = uuid.v4();
+  var RandomNumberItem1 = uuid.v4();
+  var RandomNumberItem2 = uuid.v4();
+  return (
+    <Checkbox.Group
+      onChange={setGroupValues}
+      value={groupValues}
+      accessibilityLabel="choose numbers" 
+      key={RandomNumberGroup}>
+      <Text>Série {props.chave}</Text>
+      <Checkbox value="one" key={RandomNumberItem1}>
+        Fala
+      </Checkbox>
+      <Checkbox value="two" key={RandomNumberItem2}>
+        Leitura
+      </Checkbox>
+    </Checkbox.Group>
   );
 };
 
@@ -90,14 +101,11 @@ const meuloopfunction = propsvalue => {
   const myloop = [];
   const numFinal = propsvalue;
   for (let i = 0; i < numFinal; i++) {
-    myloop.push(<CheckB key={i} />);
+    myloop.push(<CheckB chave={i} key={i} />);
   }
   return myloop;
 };
 
-export const Repeater = () => {
-  return <Center>{meuloopfunction}</Center>;
-};
 const App = () => {
   return (
     <NativeBaseProvider>
@@ -111,7 +119,6 @@ const App = () => {
         flex={1}>
         <VStack space={5} alignItems="center">
           <HStack space={2} alignItems="center">
-            {Repeater}
             <Slid />
           </HStack>
         </VStack>
