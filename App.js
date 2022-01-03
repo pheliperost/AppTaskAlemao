@@ -52,32 +52,33 @@ export const Slid = () => {
   const [onChangeEndValue, setOnChangeEndValue] = React.useState(1);
   return (
     <Stack mx={5} space={4} alignItems="center" w="100%">
-      <Box mx={5} w="250">
+      
         <Text>onChangeValue - {onChangeValue}</Text>
-        <Text>onChangeEndValue - {onChangeEndValue}</Text>        
-          <Slider
-          defaultValue={3}
-            colorScheme="cyan"
-            onChange={v => {
-            setOnChangeValue(Math.floor(v));
-            }}
-          onChangeEnd={v => {
-              setOnChangeEndValue(Math.floor(v));
-           }}>
-          <Slider.Track>
-            <Slider.FilledTrack />
-          </Slider.Track>
-          <Slider.Thumb />
-          </Slider>
-        <ScrollView
-          _contentContainerStyle={{
-            px: '20px',
-            mb: '4',
-            minW: '72',
-          }}>
-          {meuloopfunction(onChangeEndValue)}
-        </ScrollView>
-      </Box>
+        <Text>onChangeEndValue - {onChangeEndValue}</Text>              
+            <Slider
+            defaultValue={3}
+              colorScheme="cyan"
+              onChange={v => {
+              setOnChangeValue(Math.floor(v));
+              }}
+            onChangeEnd={v => {
+                setOnChangeEndValue(Math.floor(v));
+            }}>
+            <Slider.Track>
+              <Slider.FilledTrack />
+            </Slider.Track>
+            <Slider.Thumb />
+            </Slider>
+            <Box mx={1} h="350" w="350">
+              <ScrollView  
+                _contentContainerStyle={{
+                px: "20px",
+                mb: "4",
+                minW: "72",
+              }}>           
+                  {meuloopfunction(onChangeEndValue)}
+              </ScrollView> 
+            </Box>
     </Stack>
   );
 };
@@ -93,7 +94,7 @@ export const CheckB = props => {
       value={groupValues}
       accessibilityLabel="choose numbers" 
       key={RandomNumberGroup}>
-      <Text>Série {props.chave}</Text>
+      <Text>Série {props.chave + 1}</Text>
       <Checkbox value="one" key={RandomNumberItem1}>
         Fala
       </Checkbox>
@@ -125,7 +126,7 @@ const App = () => {
         px={4}
         flex={1}>
         <VStack space={5} alignItems="center">
-          <HStack space={2} alignItems="center">
+          <HStack space={2} alignItems="center">            
             <Slid />
           </HStack>
         </VStack>
