@@ -24,6 +24,7 @@ import {
   Slider,
   View,
   ScrollView,
+  Divider,
 } from 'native-base';
 import NativeBaseIcon from './src/components/NativeBaseIcon';
 import {render} from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
@@ -48,38 +49,49 @@ function ToggleDarkMode() {
 }
 
 export const Slid = () => {
-  const [onChangeValue, setOnChangeValue] = React.useState(1);
-  const [onChangeEndValue, setOnChangeEndValue] = React.useState(1);
+  const [onChangeValue, setOnChangeValue] = React.useState(30);
+  const [onChangeEndValue, setOnChangeEndValue] = React.useState(30);
   return (
-    <Stack mx={5} space={4} alignItems="center" w="100%">
-      
-        <Text>onChangeValue - {onChangeValue}</Text>
-        <Text>onChangeEndValue - {onChangeEndValue}</Text>              
-            <Slider
-            defaultValue={3}
-              colorScheme="cyan"
-              onChange={v => {
-              setOnChangeValue(Math.floor(v));
-              }}
-            onChangeEnd={v => {
-                setOnChangeEndValue(Math.floor(v));
-            }}>
-            <Slider.Track>
-              <Slider.FilledTrack />
-            </Slider.Track>
-            <Slider.Thumb />
-            </Slider>
-            <Box mx={1} h="350" w="350">
-              <ScrollView  
-                _contentContainerStyle={{
-                px: "20px",
-                mb: "4",
-                minW: "72",
-              }}>           
-                  {meuloopfunction(onChangeEndValue)}
-              </ScrollView> 
-            </Box>
+    <Stack mx={5} space={3} alignItems="baseline" w="85%">   
+      <Box w="100%" my="3"  alignItems="center">
+        <Text fontSize="xl">Defina a quantidade de séries</Text>           
+        <Text fontSize="xl">{onChangeValue} Itens</Text>           
+      </Box>   
+      <Slider
+        defaultValue={30}
+        minValue={0}
+        maxValue={50}
+        colorScheme="cyan"
+        onChange={v => {
+        setOnChangeValue(Math.floor(v));
+        }}
+      onChangeEnd={v => {
+          setOnChangeEndValue(Math.floor(v));
+      }}>
+      <Slider.Track>
+        <Slider.FilledTrack />
+      </Slider.Track>
+      <Slider.Thumb />
+      </Slider>
+        <Divider my="2" />
+        <ScrollViewCheckBox propsChangeV={onChangeEndValue} />
     </Stack>
+  );
+};
+
+export const ScrollViewCheckBox = props => {
+  return(
+    <Box mx={1} h="350" w="350">
+      <ScrollView  
+        _contentContainerStyle={{
+        px: "20px",
+        mb: "4",
+        minW: "72",
+      }}
+      space={3}>           
+          {meuloopfunction(props.propsChangeV)}
+      </ScrollView> 
+    </Box>
   );
 };
 
@@ -120,17 +132,9 @@ const App = () => {
       <HStack space={3} alignItems="flex-end">
         <ToggleDarkMode />
       </HStack>
-      <Center
-        _dark={{bg: 'blueGray.900'}}
-        _light={{bg: 'blueGray.50'}}
-        px={4}
-        flex={1}>
-        <VStack space={5} alignItems="center">
-          <HStack space={2} alignItems="center">            
-            <Slid />
-          </HStack>
-        </VStack>
-      </Center>
+      <HStack space={1} alignItems="center">
+        <Slid />
+      </HStack>
     </NativeBaseProvider>
   );
 };
