@@ -27,10 +27,7 @@ import {
   Divider,
   Button,
 } from 'native-base';
-import { Alert } from 'react-native';
-import NativeBaseIcon from './src/components/NativeBaseIcon';
-import {render} from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
-import uuid from 'react-native-uuid';
+import ScrollViewCheckBox from './Screens/ScrollViewCheckBox';
 
 // Color Switch Component
 function ToggleDarkMode() {
@@ -50,65 +47,6 @@ function ToggleDarkMode() {
   );
 }
 
-export const Slid = props => {
-  const [onChangeValue, setOnChangeValue] = React.useState(30);
-  const [onChangeEndValue, setOnChangeEndValue] = React.useState(30);
-  return (
-    <Stack mx={5} space={3} alignItems="baseline" w="85%">   
-      <Box w="100%" my="3"  alignItems="center">
-        <Text fontSize="xl">Defina a quantidade de séries</Text>           
-        <Text fontSize="xl">{onChangeValue} Itens</Text>           
-      </Box>   
-      <Slider
-        defaultValue={30}
-        minValue={0}
-        maxValue={50}
-        colorScheme="cyan"
-        onChange={v => {
-          setOnChangeValue(Math.floor(v));
-        }}
-        onChangeEnd={v => {
-            setOnChangeEndValue(Math.floor(v));
-        }}>
-          {meuloopfunction(onChangeEndValue)}
-      <Slider.Track>
-        <Slider.FilledTrack />
-      </Slider.Track>
-      <Slider.Thumb />
-      </Slider>
-        <Divider my="2" />
-       
-    </Stack>
-  );
-};
-
-export const ScrollViewCheckBox = props => {
-  return(
-    <Box mx={1} h="300" w="350">
-      <ScrollView  
-        _contentContainerStyle={{
-        px: "20px",
-        mb: "4",
-        minW: "72",
-      }}
-      space={3}> 
-            {props.valores.map((item)=>(
-               <View>
-                  <Text>Série {item.serie + 1}</Text>
-                  <Checkbox value="one" key={item.checkfala}>
-                    Fala
-                  </Checkbox>
-                  <Checkbox value="one" key={item.checkleitura}>
-                    Leitura
-                  </Checkbox>
-               </View>
-               )) }
-             
-      </ScrollView> 
-    </Box>
-  );
-};
-
 
 
 const App = () => {
@@ -120,11 +58,9 @@ const App = () => {
   const meuloopfunction = propsvalue => {
     const myloop = [];
     const numFinal = propsvalue;
-    for (let i = 0; i < numFinal; i++) {
-      const _serie = [i].join();
+    for (let i = 0; i < numFinal; i++) {      
       const _checkfala = [i ,"fala"].join();
       const _checkleitura = [i ,"leitura"].join();
-      //myloop.push(<CheckB chave={i} key={i} />);
       myloop.push({serie: i, checkfala: _checkfala, checkleitura: _checkleitura});
       
     }
@@ -132,7 +68,7 @@ const App = () => {
   };
 
   useEffect(() => {
-  //  meuloopfunction(5);
+    meuloopfunction(30);
     console.log("groupValues");
     console.log(groupValues);
   }, []);
