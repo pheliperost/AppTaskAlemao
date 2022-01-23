@@ -101,7 +101,7 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <HStack space={3} alignItems="flex-end">
-        
+        <ToggleDarkMode />
       </HStack>
       <HStack space={1} alignItems="center">
         <Stack mx={5} space={3} alignItems="baseline" w="85%">

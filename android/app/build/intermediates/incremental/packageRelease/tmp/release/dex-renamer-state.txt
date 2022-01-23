@@ -1,4 +1,4 @@
-#Wed Jan 12 23:24:28 BRST 2022
+#Sun Jan 23 18:33:07 BRST 2022
 base.0=D\:\\Proj Dev\\AppTaskAlemao\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
